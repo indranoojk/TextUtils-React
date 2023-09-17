@@ -1,15 +1,15 @@
 import './App.css';
 import Alert from './components/Alert';
-// import About from './components/About';
+import About from './components/About';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import React, { useState } from 'react';
-// import {
-//   BrowserRouter as Router,
-//   Routes,
-//   Route
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
 
-// } from "react-router-dom";
+} from "react-router-dom";
 
 
 
@@ -32,13 +32,13 @@ function App() {
       setMode('dark');
       document.body.style.backgroundColor = '#050a16';
       showAlert("Dark mode has been enabled", "success");
-      document.title = 'TextUtils - Dark Mode';
+      // document.title = 'TextUtils - Dark Mode';
     }
     else{
       setMode('light');
       document.body.style.backgroundColor = 'white';
       showAlert("Light mode has been enabled", "success");
-      document.title = 'TextUtils - Light Mode';
+      // document.title = 'TextUtils - Light Mode';
     }
   }
 
@@ -47,14 +47,14 @@ function App() {
       setMode('danger');
       document.body.style.backgroundColor = '#ad0707';
       showAlert("Danger mode has been enabled", "success");
-      document.title = 'TextUtils - Danger Mode';
+      // document.title = 'TextUtils - Danger Mode';
 
     }
     else{
       setMode('light');
       document.body.style.backgroundColor = 'white';
       showAlert("Light mode has been enabled", "success");
-      document.title = 'TextUtils - Light Mode';
+      // document.title = 'TextUtils - Light Mode';
     }
   }
 
@@ -63,29 +63,29 @@ function App() {
       setMode('success');
       document.body.style.backgroundColor = '#047a04';
       showAlert("Success mode has been enabled", "success");
-      document.title = 'TextUtils - Success Mode';
+      // document.title = 'TextUtils - Success Mode';
     }
     else{
       setMode('light');
       document.body.style.backgroundColor = 'white';
       showAlert("Light mode has been enabled", "success");
-      document.title = 'TextUtils - Light Mode';
+      // document.title = 'TextUtils - Light Mode';
 
     }
   }
 
   return (
     <>
-      <div className='container my-3'>
-        {/* <Router> */}
+      <div className='container my-2'>
+        <Router>
           <Navbar title="Textutils" mode={mode} toggleDark={toggleDark} toggleDanger={toggleDanger} toggleSuccess={toggleSuccess} />
           <Alert alert={alert} />
-          {/* <Routes> */}
-              {/* <Route path="/about" element={<About />} /> */}
-              {/* <Route path="/" element={<TextForm showAlert={showAlert} heading="Enter the text to analyze below" mode={mode} />} /> */}
-          {/* </Routes> */}
-        {/* /* </Router> */}
-        <TextForm showAlert={showAlert} heading="Enter the text to analyze below" mode={mode} />
+          <Routes>
+              <Route path="/about" element={<About mode={mode}/>} />
+              <Route path="/" element={<TextForm showAlert={showAlert} heading="Try TextUtils - Word counter, character counter, Read aloud" mode={mode} />} />
+          </Routes>
+        </Router>
+        {/* <TextForm showAlert={showAlert} heading="Enter the text to analyze below" mode={mode} /> */}
       </div>
     </>
   );
